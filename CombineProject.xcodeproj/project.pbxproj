@@ -12,6 +12,8 @@
 		274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86128BCA0BD005E7692 /* Main.storyboard */; };
 		274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86428BCA0BE005E7692 /* Assets.xcassets */; };
 		274DD86828BCA0BE005E7692 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86628BCA0BE005E7692 /* LaunchScreen.storyboard */; };
+		274DD87928BCC18F005E7692 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 274DD87828BCC18F005E7692 /* Configuration.plist */; };
+		274DD87C28BCC95E005E7692 /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DD87B28BCC95E005E7692 /* Environment.generated.swift */; };
 		8BF2A34C7142118531985073 /* Pods_CombineProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8929B34D381C9339FBF8227 /* Pods_CombineProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 		274DD86428BCA0BE005E7692 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		274DD86728BCA0BE005E7692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		274DD86928BCA0BE005E7692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		274DD87828BCC18F005E7692 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		274DD87B28BCC95E005E7692 /* Environment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.generated.swift; sourceTree = "<group>"; };
 		C8929B34D381C9339FBF8227 /* Pods_CombineProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D4AD34552314FB577E32B8 /* Pods-CombineProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineProject.release.xcconfig"; path = "Target Support Files/Pods-CombineProject/Pods-CombineProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +88,7 @@
 		274DD86F28BCB6FE005E7692 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				274DD87428BCBB71005E7692 /* Configurations */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -105,10 +110,27 @@
 		274DD87228BCB752005E7692 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				274DD87528BCBC75005E7692 /* Generated */,
 				274DD86428BCA0BE005E7692 /* Assets.xcassets */,
 				274DD86928BCA0BE005E7692 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		274DD87428BCBB71005E7692 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				274DD87828BCC18F005E7692 /* Configuration.plist */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		274DD87528BCBC75005E7692 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				274DD87B28BCC95E005E7692 /* Environment.generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		43769F1058849CA130D7AE0E /* Pods */ = {
@@ -128,6 +150,7 @@
 			buildConfigurationList = 274DD86C28BCA0BE005E7692 /* Build configuration list for PBXNativeTarget "CombineProject" */;
 			buildPhases = (
 				3492576E5AD8F0774AD2378F /* [CP] Check Pods Manifest.lock */,
+				274DD87A28BCC2B1005E7692 /* Environment */,
 				274DD85428BCA0BD005E7692 /* Sources */,
 				274DD85528BCA0BD005E7692 /* Frameworks */,
 				274DD85628BCA0BD005E7692 /* Resources */,
@@ -180,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				274DD86828BCA0BE005E7692 /* LaunchScreen.storyboard in Resources */,
+				274DD87928BCC18F005E7692 /* Configuration.plist in Resources */,
 				274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */,
 				274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */,
 			);
@@ -188,6 +212,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		274DD87A28BCC2B1005E7692 /* Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Environment;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#Script debugging\nset -x\n\n# Get path to SwiftConfigurationGenerator script\nSWIFT_CONFIGURATION_GENERATOR_PATH=$PROJECT_DIR/ConfigGenerator.swift\n\n# The input configuration file\nINPUT_PATH=$PROJECT_DIR/CombineProject/Components/Configurations/Configuration.plist\n\n# The generated file output path\nOUTPUT_PATH=$PROJECT_DIR/CombineProject/Resources/Generated/Environment.generated.swift\n\n# Add permission to generator for script execution\nchmod 755 $SWIFT_CONFIGURATION_GENERATOR_PATH\n\n# Execute the script\n$SWIFT_CONFIGURATION_GENERATOR_PATH $INPUT_PATH $OUTPUT_PATH\n";
+		};
 		3492576E5AD8F0774AD2378F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +261,7 @@
 			files = (
 				274DD86028BCA0BD005E7692 /* ViewController.swift in Sources */,
 				274DD85C28BCA0BD005E7692 /* AppDelegate.swift in Sources */,
+				274DD87C28BCC95E005E7692 /* Environment.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

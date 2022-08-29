@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		274DD85C28BCA0BD005E7692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DD85B28BCA0BD005E7692 /* AppDelegate.swift */; };
-		274DD86028BCA0BD005E7692 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DD85F28BCA0BD005E7692 /* ViewController.swift */; };
+		274DD86028BCA0BD005E7692 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DD85F28BCA0BD005E7692 /* MainVC.swift */; };
 		274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86128BCA0BD005E7692 /* Main.storyboard */; };
 		274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86428BCA0BE005E7692 /* Assets.xcassets */; };
 		274DD86828BCA0BE005E7692 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274DD86628BCA0BE005E7692 /* LaunchScreen.storyboard */; };
 		274DD87928BCC18F005E7692 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 274DD87828BCC18F005E7692 /* Configuration.plist */; };
 		274DD87C28BCC95E005E7692 /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DD87B28BCC95E005E7692 /* Environment.generated.swift */; };
+		27D97A8C28BCD42000354ADB /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D97A8B28BCD42000354ADB /* UseCaseProvider.swift */; };
+		27D97A8E28BCDA1B00354ADB /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D97A8D28BCDA1B00354ADB /* Platform.swift */; };
 		8BF2A34C7142118531985073 /* Pods_CombineProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8929B34D381C9339FBF8227 /* Pods_CombineProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,13 +23,15 @@
 		0DBEA1E22F606F2319988B74 /* Pods-CombineProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineProject.debug.xcconfig"; path = "Target Support Files/Pods-CombineProject/Pods-CombineProject.debug.xcconfig"; sourceTree = "<group>"; };
 		274DD85828BCA0BD005E7692 /* CombineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		274DD85B28BCA0BD005E7692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		274DD85F28BCA0BD005E7692 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		274DD85F28BCA0BD005E7692 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		274DD86228BCA0BD005E7692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		274DD86428BCA0BE005E7692 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		274DD86728BCA0BE005E7692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		274DD86928BCA0BE005E7692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		274DD87828BCC18F005E7692 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		274DD87B28BCC95E005E7692 /* Environment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.generated.swift; sourceTree = "<group>"; };
+		27D97A8B28BCD42000354ADB /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		27D97A8D28BCDA1B00354ADB /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		C8929B34D381C9339FBF8227 /* Pods_CombineProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D4AD34552314FB577E32B8 /* Pods-CombineProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineProject.release.xcconfig"; path = "Target Support Files/Pods-CombineProject/Pods-CombineProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,8 +82,7 @@
 				274DD87028BCB708005E7692 /* Extensions */,
 				274DD86F28BCB6FE005E7692 /* Components */,
 				274DD85B28BCA0BD005E7692 /* AppDelegate.swift */,
-				274DD85F28BCA0BD005E7692 /* ViewController.swift */,
-				274DD86128BCA0BD005E7692 /* Main.storyboard */,
+				27D97A8D28BCDA1B00354ADB /* Platform.swift */,
 				274DD86628BCA0BE005E7692 /* LaunchScreen.storyboard */,
 			);
 			path = CombineProject;
@@ -88,6 +91,7 @@
 		274DD86F28BCB6FE005E7692 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				274DD87D28BCD384005E7692 /* Protocols */,
 				274DD87428BCBB71005E7692 /* Configurations */,
 			);
 			path = Components;
@@ -103,6 +107,8 @@
 		274DD87128BCB73F005E7692 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				274DD85F28BCA0BD005E7692 /* MainVC.swift */,
+				274DD86128BCA0BD005E7692 /* Main.storyboard */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -131,6 +137,14 @@
 				274DD87B28BCC95E005E7692 /* Environment.generated.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		274DD87D28BCD384005E7692 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				27D97A8B28BCD42000354ADB /* UseCaseProvider.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		43769F1058849CA130D7AE0E /* Pods */ = {
@@ -259,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				274DD86028BCA0BD005E7692 /* ViewController.swift in Sources */,
+				27D97A8E28BCDA1B00354ADB /* Platform.swift in Sources */,
+				27D97A8C28BCD42000354ADB /* UseCaseProvider.swift in Sources */,
+				274DD86028BCA0BD005E7692 /* MainVC.swift in Sources */,
 				274DD85C28BCA0BD005E7692 /* AppDelegate.swift in Sources */,
 				274DD87C28BCC95E005E7692 /* Environment.generated.swift in Sources */,
 			);

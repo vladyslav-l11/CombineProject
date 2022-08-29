@@ -11,8 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private lazy var platform = Platform()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        true
+        window = UIWindow(frame: UIScreen.main.bounds)
+        return platform.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }

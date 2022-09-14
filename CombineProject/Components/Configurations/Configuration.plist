@@ -5,12 +5,12 @@
 	<key>Debug</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>https://www.google.com</string>
+		<string>https://randomuser.me/</string>
 	</dict>
 	<key>Release</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>https://www.google.com</string>
+		<string>https://randomuser.me/</string>
 	</dict>
 </dict>
 </plist>

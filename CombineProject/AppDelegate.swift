@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = MainVC.make {
+            $0.viewModel = MainVM(useCases: platform)
+        }
         return platform.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }

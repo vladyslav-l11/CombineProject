@@ -7,10 +7,10 @@
 
 import Foundation
 
-internal protocol HasSomeUsecase {
-    var some: Any { get }
+protocol HasUserUseCase {
+    var user: UserUseCase { get set }
 }
 
-typealias UseCases = HasSomeUsecase
+typealias UseCases = HasUserUseCase
 
 protocol UseCaseProvider: UseCases {}

@@ -25,12 +25,12 @@ public struct APIPageResponse<Value> {
 extension APIPageResponse: Decodable where Value: Decodable {}
 
 public struct APIResponse<Value> {
-    public let data: Value
+    public let results: Value
 
     func map<T>(_ transform: (Value) throws -> T) rethrows -> APIResponse<T> {
-        let newData = try transform(data)
-        return APIResponse<T>(data: newData)
+        let newData = try transform(results)
+        return APIResponse<T>(results: newData)
     }
 }
 
-extension APIResponse: Decodable where Value: Decodable {}
+extension APIResponse: Decodable where Value: Decodable { }

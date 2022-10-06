@@ -150,6 +150,6 @@ extension NetworkSession: URLSessionDataDelegate {
                     totalBytesExpectedToSend: Int64) {
         let uploadRequest = request(for: task, as: UploadRequest.self)
         uploadRequest?.updateUploadProgress(totalBytesSent: totalBytesSent,
-                                           totalBytesExpectedToSend: totalBytesExpectedToSend)
+                                            totalBytesExpectedToSend: totalBytesExpectedToSend)
     }
 }

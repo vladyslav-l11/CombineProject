@@ -14,8 +14,10 @@ extension API {
         
         public var path: String {
             switch self {
-            case .getUsers, .uplaod:
+            case .getUsers:
                 return "api/"
+            case .uplaod:
+                return "post"
             }
         }
         

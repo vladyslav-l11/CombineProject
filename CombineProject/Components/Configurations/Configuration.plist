@@ -5,7 +5,7 @@
 	<key>Debug</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>https://randomuser.me/</string>
+		<string>https://httpbin.org/</string>
 	</dict>
 	<key>Release</key>
 	<dict>

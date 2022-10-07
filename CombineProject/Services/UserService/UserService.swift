@@ -26,9 +26,9 @@ extension UserService: UserUseCase {
             .eraseToAnyPublisher()
     }
     
-    func upload(params: [String: Any]) -> AsyncTask<Void> {
+    func upload(params: [String: Any], progress: ((Double) -> Void)?) -> AsyncTask<Void> {
         context.network
-            .request(API.Users.uplaod(params: params))
+            .request(API.Users.uplaod(params: params), progress: progress)
             .mapToAppError()
             .mapToVoid()
             .receive(on: RunLoop.main)

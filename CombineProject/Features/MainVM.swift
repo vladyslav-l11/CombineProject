@@ -11,6 +11,11 @@ final class MainVM: BaseVM, UseCasesConsumer {
     typealias UseCases = HasUserUseCase
     
     @Published private(set) var users: [User]?
+    @Published private(set) var uploadResult: Void?
+    
+    private var progress: ((Double) -> Void)? = { progress in
+        print(progress)
+    }
     
     init(useCases: UseCases) {
         super.init()
@@ -21,6 +26,13 @@ final class MainVM: BaseVM, UseCasesConsumer {
         useCases.user
             .getUsers(params: params.parameters)
             .attach(value: \.users, error: \.error, on: self)
+            .store(in: &subscriptions)
+    }
+    
+    func upload(params: UploadFileParams) {
+        useCases.user
+            .upload(params: params.parameters, progress: progress)
+            .attach(value: \.uploadResult, error: \.error, on: self)
             .store(in: &subscriptions)
     }
 }

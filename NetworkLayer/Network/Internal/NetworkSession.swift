@@ -103,7 +103,7 @@ class NetworkSession: NSObject {
     }
     
     private func request<R: Request>(for task: URLSessionTask, as type: R.Type) -> R? {
-        requests.first(where: { $0 is R && $0.urlRequest == task.originalRequest }) as? R
+        requests.first { $0 is R && $0.urlRequest?.hashValue == task.originalRequest?.hashValue } as? R
     }
 }
 

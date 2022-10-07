@@ -9,5 +9,5 @@ import Foundation
 
 protocol UserUseCase {
     func getUsers(params: [String: Any]) -> AsyncTask<[User]>
-    func upload(params: [String: Any]) -> AsyncTask<Void>
+    func upload(params: [String: Any], progress: ((Double) -> Void)?) -> AsyncTask<Void>
 }

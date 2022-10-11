@@ -34,4 +34,25 @@ extension UserService: UserUseCase {
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
+    
+    func download(progress: ((Double) -> Void)?) -> AsyncTask<Void> {
+        context.network
+            .request(API.Users.download(destination: suggestedDownloadDestination(name: "image")),
+                     progress: progress)
+            .mapToAppError()
+            .mapToVoid()
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+    
+    private func suggestedDownloadDestination(name: String,
+                                              for directory: FileManager.SearchPathDirectory = .documentDirectory,
+                                              in domain: FileManager.SearchPathDomainMask = .userDomainMask,
+                                              options: Set<DownloadOptions> = [.removePreviousFile, .createIntermediateDirectories]) -> DownloadDestination {
+        { temporaryURL, _ in
+            let directoryURLs = FileManager.default.urls(for: directory, in: domain)
+            let url = directoryURLs.first?.appendingPathComponent(name) ?? temporaryURL
+            return (url, options)
+        }
+    }
 }

@@ -4,11 +4,23 @@
 <dict>
 	<key>Debug</key>
 	<dict>
-		<key>baseUrl</key>
+		<key>testDownload</key>
+		<string>https://jobapp-bucket-dev-content.s3.eu-central-1.amazonaws.com/dev/</string>
+		<key>testUpload</key>
 		<string>https://httpbin.org/</string>
+		<key>testData</key>
+		<string>https://randomuser.me/</string>
+		<key>baseUrl</key>
+		<string>https://jobapp-bucket-dev-content.s3.eu-central-1.amazonaws.com/dev/</string>
 	</dict>
 	<key>Release</key>
 	<dict>
+		<key>testDownload</key>
+		<string>https://jobapp-bucket-dev-content.s3.eu-central-1.amazonaws.com/dev/</string>
+		<key>testUpload</key>
+		<string>https://httpbin.org/</string>
+		<key>testData</key>
+		<string>https://randomuser.me/</string>
 		<key>baseUrl</key>
 		<string>https://randomuser.me/</string>
 	</dict>

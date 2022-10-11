@@ -11,6 +11,7 @@ extension API {
     public enum Users: RequestConvertible {
         case getUsers(params: [String: Any])
         case uplaod(params: [String: Any])
+        case download(destination: DownloadDestination)
         
         public var path: String {
             switch self {
@@ -18,12 +19,14 @@ extension API {
                 return "api/"
             case .uplaod:
                 return "post"
+            case .download:
+                return "84e496cd-b0c6-4802-9b1c-24d855387c94.jpeg"
             }
         }
         
         public var method: HTTPMethod {
             switch self {
-            case .getUsers:
+            case .getUsers, .download:
                 return .get
             case .uplaod:
                 return .post
@@ -49,6 +52,8 @@ extension API {
                               fileName: "\(name).\(fileExtension)",
                               mimeType: mimeType)
                 }
+            case .download(let destination):
+                return .downloadDestination(destination)
             }
         }
     }

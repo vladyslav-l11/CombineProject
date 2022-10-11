@@ -8,11 +8,35 @@
 import Combine
 
 final class DownloadRequest: Request, Publishable {
+    typealias Publisher = URLSession.DownloadTaskPublisher
+    typealias Subscriber = URLSession.DownloadTaskSubscriber
+    
     let destination: DownloadDestination?
     let downloadProgress = Progress(totalUnitCount: 0)
     var downloadProgressCallback: Command<Progress>?
-    var publisher: URLSession.DownloadTaskPublisher?
+    var publisher: Publisher?
     var cancellable: AnyCancellable?
+    
+    lazy var subscriber: Subscriber = Subscriber(recieveInput: recieveInput,
+                                                 recieveCompletion: recieveCommpletion)
+    
+    private lazy var recieveInput: Command<Subscriber.Input> = Command { input in
+        guard let httpResponse = input.response as? HTTPURLResponse else {
+            self.cancel()
+            return
+        }
+        self.data = input.data
+        self.responseCallback?.perform(value: httpResponse)
+    }
+    
+    private lazy var recieveCommpletion: Command<Subscribers.Completion<Subscriber.Failure>> = Command { completion in
+        switch completion {
+        case .failure(let error):
+            self.error = NetworkError(error)
+        case .finished:
+            return
+        }
+    }
     
     init(urlRequest: URLRequest, destination: DownloadDestination?) {
         self.destination = destination
@@ -33,36 +57,13 @@ final class DownloadRequest: Request, Publishable {
         downloadProgressCallback?.perform(value: downloadProgress)
     }
     
-    func didCreatePublisher(_ publisher: URLSession.DownloadTaskPublisher) {
+    func didCreatePublisher(_ publisher: Publisher) {
         self.publisher = publisher
     }
     
     @discardableResult
     func resume() -> Self {
-        cancellable = publisher?
-            .mapError({ urlError in
-                NetworkError(urlError)
-            })
-            .sink(receiveCompletion: { [weak self] completion in
-                guard let self = self else {
-                    self?.cancel()
-                    return
-                }
-                switch completion {
-                case .failure(let error):
-                    self.error = error
-                case .finished:
-                    return
-                }
-            },
-                  receiveValue: { [weak self] (data, urlResponse) in
-                guard let self = self, let httpResponse = urlResponse as? HTTPURLResponse else {
-                    self?.cancel()
-                    return
-                }
-                self.data = data
-                self.responseCallback?.perform(value: httpResponse)
-            })
+        publisher?.subscribe(subscriber)
         return self
     }
 }

@@ -33,11 +33,12 @@ final class MainVC: BaseVC, ViewModelContainer {
         super.viewDidLoad()
         bind()
         //getUsers(params: UserParams(results: 10))
+        download()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        openGallery()
+        //openGallery()
     }
     
     func bind() {
@@ -54,6 +55,13 @@ final class MainVC: BaseVC, ViewModelContainer {
             .compactMap { $0 }
             .sink {
                 print("Uploaded!!!")
+            }
+            .store(in: &subscriptions)
+        
+        viewModel?.$downloadResult
+            .compactMap { $0 }
+            .sink {
+                print("Downloaded!!!")
             }
             .store(in: &subscriptions)
         
@@ -79,6 +87,10 @@ final class MainVC: BaseVC, ViewModelContainer {
     
     private func upload(params: UploadFileParams) {
         viewModel?.upload(params: params)
+    }
+    
+    private func download() {
+        viewModel?.download()
     }
 }
 

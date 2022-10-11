@@ -9,6 +9,9 @@ class SwiftConfiguration {
     }
     enum ConfigurationKey: String, CaseIterable {
         case baseUrl
+		case testData
+		case testDownload
+		case testUpload
 		
     }
     // MARK: Shared instance
@@ -20,6 +23,18 @@ class SwiftConfiguration {
     let activeConfiguration: Configuration
     	var baseUrl: String {
 		return value(for: .baseUrl)
+	}
+
+	var testData: String {
+		return value(for: .testData)
+	}
+
+	var testDownload: String {
+		return value(for: .testDownload)
+	}
+
+	var testUpload: String {
+		return value(for: .testUpload)
 	}
 
 

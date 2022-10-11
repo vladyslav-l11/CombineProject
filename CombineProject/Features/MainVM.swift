@@ -12,6 +12,7 @@ final class MainVM: BaseVM, UseCasesConsumer {
     
     @Published private(set) var users: [User]?
     @Published private(set) var uploadResult: Void?
+    @Published private(set) var downloadResult: Void?
     
     private var progress: ((Double) -> Void)? = { progress in
         print(progress)
@@ -33,6 +34,13 @@ final class MainVM: BaseVM, UseCasesConsumer {
         useCases.user
             .upload(params: params.parameters, progress: progress)
             .attach(value: \.uploadResult, error: \.error, on: self)
+            .store(in: &subscriptions)
+    }
+    
+    func download() {
+        useCases.user
+            .download(progress: progress)
+            .attach(value: \.downloadResult, error: \.error, on: self)
             .store(in: &subscriptions)
     }
 }

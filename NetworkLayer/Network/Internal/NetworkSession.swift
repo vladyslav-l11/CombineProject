@@ -111,7 +111,47 @@ class NetworkSession: NSObject {
 extension NetworkSession: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
-                    didFinishDownloadingTo location: URL) {}
+                    didFinishDownloadingTo location: URL) {
+        guard let request = request(for: downloadTask, as: DownloadRequest.self) else {
+            assertionFailure("There is not request with the task!")
+            return
+        }
+        if let error = downloadTask.error as? URLError {
+            request.subscriber.receive(completion: .failure(error))
+            return
+        }
+        guard let response = downloadTask.response as? HTTPURLResponse else {
+            request.subscriber.receive(completion: .failure(URLError(.badServerResponse)))
+            return
+        }
+        guard let destination = request.destination else {
+            request.subscriber.receive(completion: .failure(URLError(.badURL)))
+            return
+        }
+        let (url, options) = destination(location, response)
+        
+        do {
+            if options .contains(.removePreviousFile),
+               self.fileManager.fileExists(atPath: url.path) {
+                try self.fileManager.removeItem(at: url)
+            }
+
+            if options.contains(.createIntermediateDirectories) {
+                let directory = url.deletingLastPathComponent()
+                try self.fileManager.createDirectory(at: directory,
+                                                     withIntermediateDirectories: true)
+            }
+
+            try self.fileManager.moveItem(at: location, to: url)
+            
+            let data = try Data(contentsOf: url)
+            _ = request.subscriber.receive((data: data, response: response))
+            request.subscriber.receive(completion: .finished)
+        }
+        catch {
+            request.subscriber.receive(completion: .failure(URLError(.cannotCreateFile)))
+        }
+    }
     
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
@@ -141,7 +181,7 @@ extension NetworkSession: URLSessionDownloadDelegate {
     }
 }
 
-// MARK: - URLSessionTaskDelegate
+// MARK: - URLSessionDataDelegate
 extension NetworkSession: URLSessionDataDelegate {
     func urlSession(_ session: URLSession,
                     task: URLSessionTask,

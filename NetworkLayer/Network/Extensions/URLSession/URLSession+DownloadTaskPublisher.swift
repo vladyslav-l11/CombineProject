@@ -75,47 +75,6 @@ extension URLSession {
             }
             
             task = session?.downloadTask(with: urlRequest)
-//            task = session?.downloadTask(with: urlRequest) { [weak self] url, response, error in
-//                guard let self = self else {
-//                    self?.subscriber?.receive(completion: .failure(URLError(.cannotCreateFile)))
-//                    return
-//                }
-//                if let error = error as? URLError {
-//                    self.subscriber?.receive(completion: .failure(error))
-//                    return
-//                }
-//                guard let response = response as? HTTPURLResponse else {
-//                    self.subscriber?.receive(completion: .failure(URLError(.badServerResponse)))
-//                    return
-//                }
-//                guard let url = url, let destination = self.request.destination else {
-//                    self.subscriber?.receive(completion: .failure(URLError(.badURL)))
-//                    return
-//                }
-//                let (location, options) = destination(url, response)
-//
-//                do {
-//                    if options.contains(.removePreviousFile),
-//                       self.fileManager.fileExists(atPath: location.path) {
-//                        try self.fileManager.removeItem(at: location)
-//                    }
-//
-//                    if options.contains(.createIntermediateDirectories) {
-//                        let directory = location.deletingLastPathComponent()
-//                        try self.fileManager.createDirectory(at: directory,
-//                                                             withIntermediateDirectories: true)
-//                    }
-//
-//                    try self.fileManager.moveItem(at: url, to: location)
-//
-//                    let data = try Data(contentsOf: location)
-//                    _ = self.subscriber?.receive((data: data, response: response))
-//                    self.subscriber?.receive(completion: .finished)
-//                }
-//                catch {
-//                    self.subscriber?.receive(completion: .failure(URLError(.cannotCreateFile)))
-//                }
-//            }
             task?.resume()
         }
 

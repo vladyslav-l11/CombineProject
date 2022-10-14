@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UploadFileParams {
+public struct UploadFileParams {
     enum CodingKeys: String, CodingKey {
         case data, name, mimeType, fileExtension
     }
@@ -17,7 +17,14 @@ struct UploadFileParams {
     var mimeType: String
     var fileExtension: String
     
-    var parameters: [String: Any] {
+    public init(data: Data, name: String, mimeType: String, fileExtension: String) {
+        self.data = data
+        self.name = name
+        self.mimeType = mimeType
+        self.fileExtension = fileExtension
+    }
+    
+    public var parameters: [String: Any] {
         [
             CodingKeys.data.rawValue: data,
             CodingKeys.name.rawValue: name,

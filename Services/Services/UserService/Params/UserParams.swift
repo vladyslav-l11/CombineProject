@@ -7,14 +7,18 @@
 
 import Foundation
 
-struct UserParams {
+public struct UserParams {
     enum CodingKeys: String, CodingKey {
         case results
     }
     
-    let results: Int
+    public let results: Int
     
-    var parameters: [String: Any] {
+    public init(results: Int) {
+        self.results = results
+    }
+    
+    public var parameters: [String: Any] {
         [CodingKeys.results.rawValue: results]
     }
 }

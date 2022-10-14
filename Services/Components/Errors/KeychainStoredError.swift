@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum KeychainStoredError: Error {
+public enum KeychainStoredError: Error {
     case unexpectedData
 }

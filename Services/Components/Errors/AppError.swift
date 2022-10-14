@@ -7,7 +7,7 @@
 
 import NetworkLayer
 
-enum AppError: Error {
+public enum AppError: Error {
     case network(error: NetworkError)
     case database(error: Error)
     case keychain(error: KeychainStoredError)
@@ -19,7 +19,7 @@ enum AppError: Error {
 }
 
 extension AppError: LocalizedError {
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .network(let error):
             return error.errorDescription

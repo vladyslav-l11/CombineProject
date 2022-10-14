@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import WidgetKit
+import Services
 
 typealias PickerDelegate = UIImagePickerControllerDelegate & UINavigationControllerDelegate
 
@@ -18,8 +20,12 @@ extension MainVC: Makeable {
 }
 
 final class MainVC: BaseVC, ViewModelContainer {
+    @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var textField: UITextField!
+    
     var viewModel: MainVM?
     
+    // MARK: - Lifecyrcle
     init?(viewModel: MainVM, coder: NSCoder) {
         super.init(coder: coder)
         self.viewModel = viewModel
@@ -32,8 +38,8 @@ final class MainVC: BaseVC, ViewModelContainer {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        //getUsers(params: UserParams(results: 10))
-        download()
+        getUsers(params: UserParams(results: 10))
+        //download()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +47,7 @@ final class MainVC: BaseVC, ViewModelContainer {
         //openGallery()
     }
     
+    // MARK: - Bind
     func bind() {
         viewModel?.$users
             .compactMap { $0 }
@@ -73,6 +80,7 @@ final class MainVC: BaseVC, ViewModelContainer {
             .store(in: &subscriptions)
     }
     
+    // MARK: - Helpers
     private func openGallery() {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
@@ -91,6 +99,12 @@ final class MainVC: BaseVC, ViewModelContainer {
     
     private func download() {
         viewModel?.download()
+    }
+    
+    // MARK: - Actions
+    @IBAction private func didTap(_ sender: UIButton) {
+        guard let text = textField.text else { return }
+        viewModel?.setTextValue(text)
     }
 }
 

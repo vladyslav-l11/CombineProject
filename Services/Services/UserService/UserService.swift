@@ -7,16 +7,16 @@
 
 import NetworkLayer
 
-final class UserService {
+public final class UserService {
     private let context: ServiceContext
     
-    init(context: ServiceContext) {
+    public init(context: ServiceContext) {
         self.context = context
     }
 }
 
 extension UserService: UserUseCase {
-    func getUsers(params: [String: Any]) -> AsyncTask<[User]> {
+    public func getUsers(params: [String: Any]) -> AsyncTask<[User]> {
         context.network
             .request(API.Users.getUsers(params: params))
             .decode(APIResponse<[User.Response]>.self)
@@ -26,7 +26,7 @@ extension UserService: UserUseCase {
             .eraseToAnyPublisher()
     }
     
-    func upload(params: [String: Any], progress: ((Double) -> Void)?) -> AsyncTask<Void> {
+    public func upload(params: [String: Any], progress: ((Double) -> Void)?) -> AsyncTask<Void> {
         context.network
             .request(API.Users.uplaod(params: params), progress: progress)
             .mapToAppError()
@@ -35,7 +35,7 @@ extension UserService: UserUseCase {
             .eraseToAnyPublisher()
     }
     
-    func download(progress: ((Double) -> Void)?) -> AsyncTask<Void> {
+    public func download(progress: ((Double) -> Void)?) -> AsyncTask<Void> {
         context.network
             .request(API.Users.download(destination: suggestedDownloadDestination(name: "image")),
                      progress: progress)

@@ -7,4 +7,4 @@
 
 import Combine
 
-typealias AsyncTask<T> = AnyPublisher<T, AppError>
+public typealias AsyncTask<T> = AnyPublisher<T, AppError>

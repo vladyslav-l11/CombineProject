@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UseCasesConsumer: AnyObject {
+public protocol UseCasesConsumer: AnyObject {
     associatedtype UseCases
     
     var useCases: UseCases { get }
@@ -17,7 +17,7 @@ private enum UseCasesConsumerKeys {
     static var useCases = "useCases"
 }
 
-extension UseCasesConsumer {
+public extension UseCasesConsumer {
     var useCases: UseCases {
         get {
             if let useCases: UseCases = ObjcRuntime.getAssociatedObject(

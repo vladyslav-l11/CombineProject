@@ -6,9 +6,11 @@
 //
 
 import Combine
+import Services
+import WidgetKit
 
 final class MainVM: BaseVM, UseCasesConsumer {
-    typealias UseCases = HasUserUseCase
+    typealias UseCases = HasUserUseCase & HasTransportUseCase
     
     @Published private(set) var users: [User]?
     @Published private(set) var uploadResult: Void?
@@ -42,5 +44,10 @@ final class MainVM: BaseVM, UseCasesConsumer {
             .download(progress: progress)
             .attach(value: \.downloadResult, error: \.error, on: self)
             .store(in: &subscriptions)
+    }
+    
+    func setTextValue(_ value: String) {
+        useCases.transport.setValue(value, forKey: .text)
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

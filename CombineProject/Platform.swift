@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Services
 import NetworkLayer
 
 final class Platform: UseCaseProvider {
     
     // MARK: - UseCases
     var user: UserUseCase
+    var transport: TransportUseCase
     
     // MARK: - Private properties
     private let network: Network
@@ -25,6 +27,7 @@ final class Platform: UseCaseProvider {
         
         let context = ServiceContextProvider(network: network)
         user = UserService(context: context)
+        transport = TransportService()
     }
     
     // MARK: - AppDelegate

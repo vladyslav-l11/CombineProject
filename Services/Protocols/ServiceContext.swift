@@ -7,6 +7,6 @@
 
 import NetworkLayer
 
-protocol ServiceContext {
+public protocol ServiceContext {
     var network: Network { get }
 }

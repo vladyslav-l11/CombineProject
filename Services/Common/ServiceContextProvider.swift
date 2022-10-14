@@ -7,13 +7,13 @@
 
 import NetworkLayer
 
-final class ServiceContextProvider: ServiceContext {
+public final class ServiceContextProvider: ServiceContext {
     
     // MARK: - Properties
-    let network: Network
+    public let network: Network
     
     // MARK: - Lifecycle
-    init(network: Network) {
+    public init(network: Network) {
         self.network = network
     }
 }

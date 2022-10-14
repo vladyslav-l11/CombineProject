@@ -11,7 +11,7 @@
 		<key>testData</key>
 		<string>https://randomuser.me/</string>
 		<key>baseUrl</key>
-		<string>https://jobapp-bucket-dev-content.s3.eu-central-1.amazonaws.com/dev/</string>
+		<string>https://randomuser.me/</string>
 	</dict>
 	<key>Release</key>
 	<dict>

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserUseCase {
+public protocol UserUseCase {
     func getUsers(params: [String: Any]) -> AsyncTask<[User]>
     func upload(params: [String: Any], progress: ((Double) -> Void)?) -> AsyncTask<Void>
     func download(progress: ((Double) -> Void)?) -> AsyncTask<Void>

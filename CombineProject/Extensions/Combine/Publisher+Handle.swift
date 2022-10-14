@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Services
 
 extension Publisher where Failure == AppError {
     func attach<Root>(value: ReferenceWritableKeyPath<Root, Output?>? = nil,

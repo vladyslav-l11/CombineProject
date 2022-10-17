@@ -19,7 +19,13 @@ struct MyWidgetEntryView: View {
     }
 
     var body: some View {
-        Text(entry.text)
+        GeometryReader { gr in
+            VStack {
+                Text(entry.text)
+            }
+            .frame(width: gr.size.width, height: gr.size.height)
+            .background(entry.isRed ? Color.red : Color.white)
+        }
     }
 }
 
@@ -41,7 +47,7 @@ struct MyWidget: Widget {
 
 struct MyWidget_Previews: PreviewProvider {
     static var previews: some View {
-        MyWidgetEntryView(entry: SimpleEntry(date: Date(),text: "Text", configuration: ConfigurationIntent()))
+        MyWidgetEntryView(entry: SimpleEntry(date: Date(),text: "Text", isRed: false, configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

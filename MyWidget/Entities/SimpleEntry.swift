@@ -10,5 +10,6 @@ import WidgetKit
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let text: String
+    let isRed: Bool
     let configuration: ConfigurationIntent
 }

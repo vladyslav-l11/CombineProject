@@ -12,6 +12,7 @@ import Combine
 import Services
 
 struct MyWidgetEntryView: View {
+    @Environment(\.widgetFamily) var widgetFamily
     private var entry: MyWidgetVM.Entry
     
     init(entry: MyWidgetVM.Entry) {
@@ -20,11 +21,20 @@ struct MyWidgetEntryView: View {
 
     var body: some View {
         GeometryReader { gr in
-            VStack {
-                Text(entry.text)
+            switch widgetFamily {
+            case .accessoryCircular, .accessoryRectangular:
+                VStack(alignment: .center) {
+                    Text(entry.text)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(width: gr.size.width, height: gr.size.height)
+            default:
+                VStack {
+                    Text(entry.text)
+                }
+                .frame(width: gr.size.width, height: gr.size.height)
+                .background(entry.isRed ? Color.red : Color.white)
             }
-            .frame(width: gr.size.width, height: gr.size.height)
-            .background(entry.isRed ? Color.red : Color.white)
         }
     }
 }
@@ -33,6 +43,13 @@ struct MyWidgetEntryView: View {
 struct MyWidget: Widget {
     let platform = Platform()
     let kind: String = "MyWidget"
+    var supportedFamilies: [WidgetFamily] {
+        if #available(iOS 16, *) {
+            return [.accessoryInline, .accessoryCircular, .accessoryRectangular, .systemMedium]
+        } else {
+            return []
+        }
+    }
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -42,6 +59,7 @@ struct MyWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies(supportedFamilies)
     }
 }
 

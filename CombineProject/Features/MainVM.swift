@@ -50,4 +50,9 @@ final class MainVM: BaseVM, UseCasesConsumer {
         useCases.transport.setValue(value, forKey: .text)
         WidgetCenter.shared.reloadAllTimelines()
     }
+    
+    func removeUser(_ user: User) {
+        guard let index = users?.firstIndex(of: user) else { return }
+        users?.remove(at: index)
+    }
 }

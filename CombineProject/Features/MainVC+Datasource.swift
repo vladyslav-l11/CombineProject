@@ -17,15 +17,15 @@ extension MainVC {
     }
     
     enum Item: Hashable {
-        case main(name: String, email: String)
+        case main(user: User, email: String)
     }
     
     func makeDataSource(for tableView: UITableView) -> DataSource {
         DataSource(tableView: tableView) { tableView, indexPath, item in
             switch item {
-            case let .main(name,_):
+            case let .main(user,_):
                 return tableView.makeCell(MainTVC.self, for: indexPath) {
-                    $0.setup(name: name)
+                    $0.setup(user: user, delegate: self)
                 }
             }
         }
@@ -42,7 +42,7 @@ extension MainVC {
     
     private func makeItems(from users: [User]) -> [Item] {
         users.enumerated().map {
-            .main(name: "\($0.element.name.first) \($0.element.name.last)", email: $0.element.email)
+            .main(user: $0.element, email: $0.element.email)
         }
     }
 }

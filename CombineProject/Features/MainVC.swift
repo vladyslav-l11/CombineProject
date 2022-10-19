@@ -130,7 +130,7 @@ extension MainVC: PickerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[.originalImage] as? UIImage,
-              let data = image.jpegData(compressionQuality: 100)else { return }
+              let data = image.jpegData(compressionQuality: 100) else { return }
         let imageUrl = info[.imageURL] as? URL
         if let imageUrl = imageUrl, imageUrl.pathExtension != "jpeg" && imageUrl.pathExtension != "png" {
             dismiss(animated: true)
@@ -141,5 +141,12 @@ extension MainVC: PickerDelegate {
                                         mimeType: imageUrl?.pathExtension ?? "jpeg",
                                         fileExtension: imageUrl?.deletingPathExtension().lastPathComponent ?? image.description))
         dismiss(animated: true)
+    }
+}
+
+// MARK: - MainTVCDelegate
+extension MainVC: MainTVCDelegate {
+    func didTapRemove(_ cell: MainTVC, with user: User) {
+        viewModel?.removeUser(user)
     }
 }

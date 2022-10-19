@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct User {
+public struct User: Equatable, Hashable {
     public let name: Name
     public let gender: String
     public let email: String
 }
 
 public extension User {
-    struct Name: Decodable {
+    struct Name: Equatable, Hashable, Decodable {
         public let title: String
         public let first: String
         public let last: String

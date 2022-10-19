@@ -81,6 +81,12 @@
 		276E809F28EC34DB00D4B23C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E809E28EC34DB00D4B23C /* API.swift */; };
 		276E80A128EC34EF00D4B23C /* API+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E80A028EC34EF00D4B23C /* API+Users.swift */; };
 		276E80BC28EC662700D4B23C /* Publisher+NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E80BB28EC662700D4B23C /* Publisher+NetworkResponse.swift */; };
+		27808B8F28FFE95D0020D6E1 /* MainVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27808B8E28FFE95D0020D6E1 /* MainVC+Datasource.swift */; };
+		27808B9328FFEA700020D6E1 /* MainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27808B9128FFEA700020D6E1 /* MainTVC.swift */; };
+		27808B9428FFEA700020D6E1 /* MainTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27808B9228FFEA700020D6E1 /* MainTVC.xib */; };
+		27808B9728FFEE3F0020D6E1 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27808B9628FFEE3F0020D6E1 /* With.swift */; };
+		27808B9928FFEEA10020D6E1 /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27808B9828FFEEA10020D6E1 /* OptionalProtocol.swift */; };
+		27808B9C28FFEFE30020D6E1 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27808B9B28FFEFE30020D6E1 /* UITableView+Helpers.swift */; };
 		278916CE28EC6BFE0029F056 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278916CD28EC6BFE0029F056 /* MainVM.swift */; };
 		278916D528EC6DA10029F056 /* Makeble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278916D428EC6DA10029F056 /* Makeble.swift */; };
 		278916D728EC71A70029F056 /* ViewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278916D628EC71A70029F056 /* ViewModelContainer.swift */; };
@@ -249,6 +255,12 @@
 		276E80B928EC64E600D4B23C /* Publisher+MapToAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+MapToAppError.swift"; sourceTree = "<group>"; };
 		276E80BB28EC662700D4B23C /* Publisher+NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+NetworkResponse.swift"; sourceTree = "<group>"; };
 		276E80BE28EC66C400D4B23C /* User+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Response.swift"; sourceTree = "<group>"; };
+		27808B8E28FFE95D0020D6E1 /* MainVC+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+Datasource.swift"; sourceTree = "<group>"; };
+		27808B9128FFEA700020D6E1 /* MainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTVC.swift; sourceTree = "<group>"; };
+		27808B9228FFEA700020D6E1 /* MainTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTVC.xib; sourceTree = "<group>"; };
+		27808B9628FFEE3F0020D6E1 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
+		27808B9828FFEEA10020D6E1 /* OptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalProtocol.swift; sourceTree = "<group>"; };
+		27808B9B28FFEFE30020D6E1 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
 		278916CD28EC6BFE0029F056 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 		278916CF28EC6C690029F056 /* UseCasesConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesConsumer.swift; sourceTree = "<group>"; };
 		278916D228EC6CBA0029F056 /* NSObject+AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+AssociatedObject.swift"; sourceTree = "<group>"; };
@@ -502,6 +514,7 @@
 		274DD86F28BCB6FE005E7692 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				27808B9528FFEE220020D6E1 /* Utils */,
 				274DD87428BCBB71005E7692 /* Configurations */,
 				276E80A628EC5A5900D4B23C /* Common */,
 				274DD87D28BCD384005E7692 /* Protocols */,
@@ -512,6 +525,7 @@
 		274DD87028BCB708005E7692 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				27808B9A28FFEFD60020D6E1 /* UIKit */,
 				276E80B828EC64CB00D4B23C /* Combine */,
 			);
 			path = Extensions;
@@ -520,9 +534,11 @@
 		274DD87128BCB73F005E7692 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				27808B9028FFEA0D0020D6E1 /* Views */,
 				274DD85F28BCA0BD005E7692 /* MainVC.swift */,
 				274DD86128BCA0BD005E7692 /* Main.storyboard */,
 				278916CD28EC6BFE0029F056 /* MainVM.swift */,
+				27808B8E28FFE95D0020D6E1 /* MainVC+Datasource.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -558,6 +574,7 @@
 			children = (
 				278916D428EC6DA10029F056 /* Makeble.swift */,
 				278916D628EC71A70029F056 /* ViewModelContainer.swift */,
+				27808B9828FFEEA10020D6E1 /* OptionalProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -646,6 +663,31 @@
 				276E80BE28EC66C400D4B23C /* User+Response.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		27808B9028FFEA0D0020D6E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27808B9128FFEA700020D6E1 /* MainTVC.swift */,
+				27808B9228FFEA700020D6E1 /* MainTVC.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		27808B9528FFEE220020D6E1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				27808B9628FFEE3F0020D6E1 /* With.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		27808B9A28FFEFD60020D6E1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				27808B9B28FFEFE30020D6E1 /* UITableView+Helpers.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		278916D128EC6C980029F056 /* Foundation */ = {
@@ -1024,6 +1066,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				274DD86828BCA0BE005E7692 /* LaunchScreen.storyboard in Resources */,
+				27808B9428FFEA700020D6E1 /* MainTVC.xib in Resources */,
 				275FF36D28F8066C00A5B751 /* Configuration.plist in Resources */,
 				274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */,
 				274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */,
@@ -1179,6 +1222,10 @@
 			files = (
 				274A662428F5AC3D00AF03DB /* MyWidget.intentdefinition in Sources */,
 				27D97A8E28BCDA1B00354ADB /* Platform.swift in Sources */,
+				27808B9328FFEA700020D6E1 /* MainTVC.swift in Sources */,
+				27808B9C28FFEFE30020D6E1 /* UITableView+Helpers.swift in Sources */,
+				27808B9728FFEE3F0020D6E1 /* With.swift in Sources */,
+				27808B8F28FFE95D0020D6E1 /* MainVC+Datasource.swift in Sources */,
 				2730F9F528ED8A93000CE7B6 /* Publisher+Handle.swift in Sources */,
 				2730F9F728EDAC9E000CE7B6 /* BaseVC.swift in Sources */,
 				274DD86028BCA0BD005E7692 /* MainVC.swift in Sources */,
@@ -1186,6 +1233,7 @@
 				278916D928EC71D90029F056 /* BaseVM.swift in Sources */,
 				278916D728EC71A70029F056 /* ViewModelContainer.swift in Sources */,
 				274DD87C28BCC95E005E7692 /* Environment.generated.swift in Sources */,
+				27808B9928FFEEA10020D6E1 /* OptionalProtocol.swift in Sources */,
 				278916D528EC6DA10029F056 /* Makeble.swift in Sources */,
 				278916CE28EC6BFE0029F056 /* MainVM.swift in Sources */,
 			);

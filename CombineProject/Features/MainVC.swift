@@ -22,8 +22,11 @@ extension MainVC: Makeable {
 final class MainVC: BaseVC, ViewModelContainer {
     @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var tableView: UITableView!
     
     var viewModel: MainVM?
+    
+    private var dataSource: DataSource?
     
     // MARK: - Lifecyrcle
     init?(viewModel: MainVM, coder: NSCoder) {
@@ -37,6 +40,7 @@ final class MainVC: BaseVC, ViewModelContainer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         bind()
         getUsers(params: UserParams(results: 10))
         //download()
@@ -47,14 +51,27 @@ final class MainVC: BaseVC, ViewModelContainer {
         //openGallery()
     }
     
+    // MARK: - Setup
+    private func setup() {
+        dataSource = makeDataSource(for: tableView)
+        withNonNil(tableView) {
+            $0.register(MainTVC.self)
+        }
+    }
+    
     // MARK: - Bind
     func bind() {
         viewModel?.$users
             .compactMap { $0 }
-            .sink {
+            .sink { [weak self] in
+                guard let self = self else { return }
+                
                 $0.forEach { user in
                     print("\(user.name.first) \(user.name.last)")
                 }
+                
+                let snapshot = self.makeSnapshot(from: $0)
+                self.dataSource?.apply(snapshot)
             }
             .store(in: &subscriptions)
         

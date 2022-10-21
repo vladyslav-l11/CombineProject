@@ -149,4 +149,12 @@ extension MainVC: MainTVCDelegate {
     func didTapRemove(_ cell: MainTVC, with user: User) {
         viewModel?.removeUser(user)
     }
+    
+    func didTapRemoveComment(_ cell: MainTVC, with comment: Comment, andUser user: User) {
+        viewModel?.removeComment(comment, withUser: user)
+    }
+    
+    func didTapAddComment(_ cell: MainTVC, withUser user: User) {
+        viewModel?.addComment(toUser: user)
+    }
 }

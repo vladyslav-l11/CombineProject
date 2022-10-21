@@ -20,5 +20,6 @@ extension User {
         name = response.name
         gender = response.gender
         email = response.email
+        comments = []
     }
 }

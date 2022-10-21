@@ -55,4 +55,15 @@ final class MainVM: BaseVM, UseCasesConsumer {
         guard let index = users?.firstIndex(of: user) else { return }
         users?.remove(at: index)
     }
+    
+    func removeComment(_ comment: Comment, withUser user: User) {
+        guard let userIndex = users?.firstIndex(of: user),
+              let commentIndex = user.comments.firstIndex(of: comment) else { return }
+        users?[userIndex].comments.remove(at: commentIndex)
+    }
+    
+    func addComment(toUser user: User) {
+        guard let userIndex = users?.firstIndex(of: user) else { return }
+        users?[userIndex].comments.append(Comment(text: "comment"))
+    }
 }

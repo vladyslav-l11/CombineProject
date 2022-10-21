@@ -55,6 +55,8 @@
 		2733837B28C899300010FE08 /* DownloadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733837A28C899300010FE08 /* DownloadResponse.swift */; };
 		2735F1D228C9DD78004D3A6C /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735F1D128C9DD78004D3A6C /* Command.swift */; };
 		2735F1D528C9E0B7004D3A6C /* Result+Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735F1D428C9E0B7004D3A6C /* Result+Failure.swift */; };
+		2736BFE2290140C700BEB95D /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736BFE1290140C700BEB95D /* CommentView.swift */; };
+		2736BFE6290140EC00BEB95D /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2736BFE5290140EC00BEB95D /* CommentView.xib */; };
 		2738F4FE28C603AD008217FA /* MultipartFormData+BodyPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F4FD28C603AD008217FA /* MultipartFormData+BodyPart.swift */; };
 		2738F50028C60403008217FA /* MultipartFormData+BoundartGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F4FF28C60403008217FA /* MultipartFormData+BoundartGenerator.swift */; };
 		2738F50528C61914008217FA /* Network+HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F50428C61914008217FA /* Network+HTTPHeader.swift */; };
@@ -215,6 +217,8 @@
 		2733837A28C899300010FE08 /* DownloadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadResponse.swift; sourceTree = "<group>"; };
 		2735F1D128C9DD78004D3A6C /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		2735F1D428C9E0B7004D3A6C /* Result+Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Failure.swift"; sourceTree = "<group>"; };
+		2736BFE1290140C700BEB95D /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		2736BFE5290140EC00BEB95D /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		2738F4FD28C603AD008217FA /* MultipartFormData+BodyPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+BodyPart.swift"; sourceTree = "<group>"; };
 		2738F4FF28C60403008217FA /* MultipartFormData+BoundartGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+BoundartGenerator.swift"; sourceTree = "<group>"; };
 		2738F50428C61914008217FA /* Network+HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+HTTPHeader.swift"; sourceTree = "<group>"; };
@@ -394,6 +398,24 @@
 				2735F1D428C9E0B7004D3A6C /* Result+Failure.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		2736BFDF2901409500BEB95D /* MainTVC */ = {
+			isa = PBXGroup;
+			children = (
+				27808B9128FFEA700020D6E1 /* MainTVC.swift */,
+				27808B9228FFEA700020D6E1 /* MainTVC.xib */,
+			);
+			path = MainTVC;
+			sourceTree = "<group>";
+		};
+		2736BFE0290140A800BEB95D /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				2736BFE1290140C700BEB95D /* CommentView.swift */,
+				2736BFE5290140EC00BEB95D /* CommentView.xib */,
+			);
+			path = CommentView;
 			sourceTree = "<group>";
 		};
 		2738F50128C616A9008217FA /* Network */ = {
@@ -668,8 +690,8 @@
 		27808B9028FFEA0D0020D6E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				27808B9128FFEA700020D6E1 /* MainTVC.swift */,
-				27808B9228FFEA700020D6E1 /* MainTVC.xib */,
+				2736BFE0290140A800BEB95D /* CommentView */,
+				2736BFDF2901409500BEB95D /* MainTVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1069,6 +1091,7 @@
 				27808B9428FFEA700020D6E1 /* MainTVC.xib in Resources */,
 				275FF36D28F8066C00A5B751 /* Configuration.plist in Resources */,
 				274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */,
+				2736BFE6290140EC00BEB95D /* CommentView.xib in Resources */,
 				274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1221,6 +1244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				274A662428F5AC3D00AF03DB /* MyWidget.intentdefinition in Sources */,
+				2736BFE2290140C700BEB95D /* CommentView.swift in Sources */,
 				27D97A8E28BCDA1B00354ADB /* Platform.swift in Sources */,
 				27808B9328FFEA700020D6E1 /* MainTVC.swift in Sources */,
 				27808B9C28FFEFE30020D6E1 /* UITableView+Helpers.swift in Sources */,

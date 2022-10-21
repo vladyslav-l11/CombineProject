@@ -57,6 +57,9 @@
 		2735F1D528C9E0B7004D3A6C /* Result+Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2735F1D428C9E0B7004D3A6C /* Result+Failure.swift */; };
 		2736BFE2290140C700BEB95D /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736BFE1290140C700BEB95D /* CommentView.swift */; };
 		2736BFE6290140EC00BEB95D /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2736BFE5290140EC00BEB95D /* CommentView.xib */; };
+		2737797A2902C2AC002CAAF6 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273779792902C2AC002CAAF6 /* DetailVC.swift */; };
+		2737797C2902C2E3002CAAF6 /* DetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2737797B2902C2E3002CAAF6 /* DetailVM.swift */; };
+		2737797E2902C2F2002CAAF6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2737797D2902C2F2002CAAF6 /* Detail.storyboard */; };
 		2738F4FE28C603AD008217FA /* MultipartFormData+BodyPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F4FD28C603AD008217FA /* MultipartFormData+BodyPart.swift */; };
 		2738F50028C60403008217FA /* MultipartFormData+BoundartGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F4FF28C60403008217FA /* MultipartFormData+BoundartGenerator.swift */; };
 		2738F50528C61914008217FA /* Network+HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738F50428C61914008217FA /* Network+HTTPHeader.swift */; };
@@ -219,6 +222,9 @@
 		2735F1D428C9E0B7004D3A6C /* Result+Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Failure.swift"; sourceTree = "<group>"; };
 		2736BFE1290140C700BEB95D /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		2736BFE5290140EC00BEB95D /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
+		273779792902C2AC002CAAF6 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		2737797B2902C2E3002CAAF6 /* DetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVM.swift; sourceTree = "<group>"; };
+		2737797D2902C2F2002CAAF6 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		2738F4FD28C603AD008217FA /* MultipartFormData+BodyPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+BodyPart.swift"; sourceTree = "<group>"; };
 		2738F4FF28C60403008217FA /* MultipartFormData+BoundartGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipartFormData+BoundartGenerator.swift"; sourceTree = "<group>"; };
 		2738F50428C61914008217FA /* Network+HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+HTTPHeader.swift"; sourceTree = "<group>"; };
@@ -418,6 +424,27 @@
 			path = CommentView;
 			sourceTree = "<group>";
 		};
+		273779772902C277002CAAF6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				274DD85F28BCA0BD005E7692 /* MainVC.swift */,
+				274DD86128BCA0BD005E7692 /* Main.storyboard */,
+				278916CD28EC6BFE0029F056 /* MainVM.swift */,
+				27808B8E28FFE95D0020D6E1 /* MainVC+Datasource.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		273779782902C28F002CAAF6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				273779792902C2AC002CAAF6 /* DetailVC.swift */,
+				2737797B2902C2E3002CAAF6 /* DetailVM.swift */,
+				2737797D2902C2F2002CAAF6 /* Detail.storyboard */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		2738F50128C616A9008217FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,11 +583,9 @@
 		274DD87128BCB73F005E7692 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				273779782902C28F002CAAF6 /* Detail */,
+				273779772902C277002CAAF6 /* Main */,
 				27808B9028FFEA0D0020D6E1 /* Views */,
-				274DD85F28BCA0BD005E7692 /* MainVC.swift */,
-				274DD86128BCA0BD005E7692 /* Main.storyboard */,
-				278916CD28EC6BFE0029F056 /* MainVM.swift */,
-				27808B8E28FFE95D0020D6E1 /* MainVC+Datasource.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1091,6 +1116,7 @@
 				27808B9428FFEA700020D6E1 /* MainTVC.xib in Resources */,
 				275FF36D28F8066C00A5B751 /* Configuration.plist in Resources */,
 				274DD86528BCA0BE005E7692 /* Assets.xcassets in Resources */,
+				2737797E2902C2F2002CAAF6 /* Detail.storyboard in Resources */,
 				2736BFE6290140EC00BEB95D /* CommentView.xib in Resources */,
 				274DD86328BCA0BD005E7692 /* Main.storyboard in Resources */,
 			);
@@ -1248,6 +1274,8 @@
 				27D97A8E28BCDA1B00354ADB /* Platform.swift in Sources */,
 				27808B9328FFEA700020D6E1 /* MainTVC.swift in Sources */,
 				27808B9C28FFEFE30020D6E1 /* UITableView+Helpers.swift in Sources */,
+				2737797C2902C2E3002CAAF6 /* DetailVM.swift in Sources */,
+				2737797A2902C2AC002CAAF6 /* DetailVC.swift in Sources */,
 				27808B9728FFEE3F0020D6E1 /* With.swift in Sources */,
 				27808B8F28FFE95D0020D6E1 /* MainVC+Datasource.swift in Sources */,
 				2730F9F528ED8A93000CE7B6 /* Publisher+Handle.swift in Sources */,

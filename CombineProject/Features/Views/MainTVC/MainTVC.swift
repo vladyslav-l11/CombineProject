@@ -12,6 +12,7 @@ protocol MainTVCDelegate: AnyObject {
     func didTapRemove(_ cell: MainTVC, with user: User)
     func didTapRemoveComment(_ cell: MainTVC, with comment: Comment, andUser user: User)
     func didTapAddComment(_ cell: MainTVC, withUser user: User)
+    func didGetPreview(_ cell: MainTVC, withUser user: User) -> UIViewController
 }
 
 final class MainTVC: UITableViewCell {
@@ -43,7 +44,10 @@ final class MainTVC: UITableViewCell {
 // MARK: - UIContextMenuInteractionDelegate
 extension MainTVC: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+        UIContextMenuConfiguration(identifier: nil, previewProvider: { [weak self] () -> UIViewController? in
+            guard let self = self, let user = self.user else { return nil }
+            return self.delegate?.didGetPreview(self, withUser: user)
+        }) { _ in
             let remove = UIAction(title: "Remove",
                                   image: UIImage(systemName: "trash"),
                                   attributes: .destructive) { [weak self] _ in

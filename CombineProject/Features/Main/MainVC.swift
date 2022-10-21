@@ -56,6 +56,7 @@ final class MainVC: BaseVC, ViewModelContainer {
         dataSource = makeDataSource(for: tableView)
         withNonNil(tableView) {
             $0.register(MainTVC.self)
+            $0.delegate = self
         }
     }
     
@@ -118,6 +119,12 @@ final class MainVC: BaseVC, ViewModelContainer {
         viewModel?.download()
     }
     
+    private func showDetail(user: User) -> DetailVC {
+        DetailVC.make {
+            $0.viewModel = DetailVM(user: user)
+        }
+    }
+    
     // MARK: - Actions
     @IBAction private func didTap(_ sender: UIButton) {
         guard let text = textField.text else { return }
@@ -156,5 +163,18 @@ extension MainVC: MainTVCDelegate {
     
     func didTapAddComment(_ cell: MainTVC, withUser user: User) {
         viewModel?.addComment(toUser: user)
+    }
+    
+    func didGetPreview(_ cell: MainTVC, withUser user: User) -> UIViewController {
+        showDetail(user: user)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MainVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let user = viewModel?.users?[indexPath.row] else { return }
+        let detailVC = showDetail(user: user)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

@@ -16,6 +16,11 @@ extension TestUIVC: Makeable {
 }
 
 final class TestUIVC: BaseVC, ViewModelContainer {
+    private enum StartTime: String {
+        case earlist = "Earliest start time first"
+        case latest = "Latest start time first"
+    }
+    
     @IBOutlet private weak var sortButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     
@@ -56,8 +61,8 @@ final class TestUIVC: BaseVC, ViewModelContainer {
         }
         withNonNil(sortButton) { button in
             button.menu = UIMenu(children: [
-                UIAction(title: "Earliest start time first", state: .on, handler: handleMenuTap),
-                UIAction(title: "Latest start time first", handler: handleMenuTap)
+                UIAction(title: StartTime.earlist.rawValue, state: .on, handler: handleMenuTap),
+                UIAction(title: StartTime.latest.rawValue, handler: handleMenuTap)
             ])
             button.showsMenuAsPrimaryAction = true
         }

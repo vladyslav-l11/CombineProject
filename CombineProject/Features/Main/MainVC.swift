@@ -61,7 +61,8 @@ final class MainVC: BaseVC, ViewModelContainer {
     }
     
     // MARK: - Bind
-    func bind() {
+    override func bind() {
+        super.bind()
         viewModel?.$users
             .compactMap { $0 }
             .sink { [weak self] in

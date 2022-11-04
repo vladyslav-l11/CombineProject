@@ -13,3 +13,11 @@ protocol ViewModelContainer: AnyObject {
     var viewModel: ViewModel? { get set }
     func bind()
 }
+
+extension ViewModelContainer where Self: BaseVC {
+    func setupViewModel() {
+        viewModel?.$isLoading
+            .assign(to: \.isLoading, on: self)
+            .store(in: &subscriptions)
+    }
+}

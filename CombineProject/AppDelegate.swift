@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var platform = Platform()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = UINavigationController(rootViewController: MainVC.make {
-            $0.viewModel = MainVM(useCases: platform)
+        let navigationController = UINavigationController(rootViewController: TestUIVC.make {
+            $0.viewModel = TestUIVM()
         })
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

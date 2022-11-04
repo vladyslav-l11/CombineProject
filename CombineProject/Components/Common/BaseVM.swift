@@ -8,6 +8,7 @@
 import Combine
 
 class BaseVM {
+    @Published var isLoading = false
     @Published var error: Error?
     var subscriptions: Set<AnyCancellable> = []
     
